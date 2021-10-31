@@ -1,0 +1,32 @@
+package com.myprodxn.app.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.myprodxn.app.domain.User;
+import com.myprodxn.app.service.UserService;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+	private UserService userservice;
+	
+	public UserController(UserService userservice) {
+		this.userservice = userservice;
+	}
+	
+	@GetMapping("/list")
+	public Iterable<User> list(){
+		return userservice.list();
+	}
+	
+	@PostMapping(value = "/insertForum")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<UUID> insertForum1(@RequestBody User user) {
+		System.out.println(user);
+		userservice.save(user);
+		return new ResponseEntity<UUID>(HttpStatus.CREATED);
+	}
+
+}

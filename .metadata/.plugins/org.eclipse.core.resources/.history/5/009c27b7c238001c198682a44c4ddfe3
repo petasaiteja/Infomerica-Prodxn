@@ -1,0 +1,5 @@
+package com.myprodxn.app.dao;
+
+public interface IUserDao {
+
+}

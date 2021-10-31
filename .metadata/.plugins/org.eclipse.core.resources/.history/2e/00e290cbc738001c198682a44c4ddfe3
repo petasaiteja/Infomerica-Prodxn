@@ -1,0 +1,12 @@
+package com.myprodxn.app.dao;
+
+import java.util.List;
+
+import com.myprodxn.app.domain.User;
+
+public interface IUserDao {
+
+	public abstract void insertUser(final User user);
+	
+	public abstract List<User> selectAllUser();
+}
